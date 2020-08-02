@@ -9,7 +9,7 @@ public class LocalizationController {
 
     private final static String comma = ",";
     private final static String fileName = "C:\\Users\\jakub.grodzicki\\Desktop\\testy\\restgps.txt";
-    ISaveFileService iSaveFileService = new ISaveFileService(fileName);
+    SaveFileServices saveFileServices = new SaveFileServices(fileName);
 
 
     @GetMapping("/getGPS")
@@ -20,7 +20,7 @@ public class LocalizationController {
         String logMsg = actualGps.getDeviceid()+comma
                 +actualGps.getLatitiude()+comma
                 +actualGps.getLongitude()+System.lineSeparator();
-        iSaveFileService.SaveGpsToFile(logMsg);
+        saveFileServices.SaveGpsToFile(logMsg);
 
         return actualGps;
     }

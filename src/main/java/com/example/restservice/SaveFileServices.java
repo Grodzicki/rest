@@ -4,14 +4,20 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public class ISaveFileService implements SaveFileService{
+public class SaveFileServices implements ISaveFileServices {
 
     private String fileName = new String();
     private FileWriter myLogWriter;
     private BufferedWriter myBuffer;
 
-    public ISaveFileService(String fileName){
+    public SaveFileServices(){
+        this.fileName = "";
+    };
+
+    public SaveFileServices(String fileName){
         this.fileName = fileName;
     }
 
@@ -22,13 +28,18 @@ public class ISaveFileService implements SaveFileService{
     @Override
     public void createFile() {
         try{
-            File myLogFile = new File(fileName);
+            File myLogFile = new File(getFileName());
+            String path = myLogFile.getParent();
+            if (!Files.exists(Paths.get(path))) {
+                Files.createDirectories(Paths.get(path));
+            }
+
             if (myLogFile.createNewFile()) {
                 System.out.println("File created: " + myLogFile.getName());
             } else {
                 System.out.println("File already exists.");
             }
-            myLogWriter = new FileWriter(fileName, true);
+            myLogWriter = new FileWriter(getFileName(), true);
             myBuffer = new BufferedWriter(myLogWriter);
         }
         catch (IOException e) {

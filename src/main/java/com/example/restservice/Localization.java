@@ -2,9 +2,9 @@ package com.example.restservice;
 
 public class Localization {
 
-    private final String deviceid;// = 12345;
-    private final String latitiude;// = 505430;
-    private final String longitude;// = 1423412;
+    private final String deviceid;
+    private final String latitiude;
+    private final String longitude;
 
     public Localization(String deviceid, String latitiude, String longitude) {
         this.deviceid = deviceid;
