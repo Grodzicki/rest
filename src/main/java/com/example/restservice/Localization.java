@@ -6,6 +6,11 @@ public class Localization {
     private final String latitiude;
     private final String longitude;
 
+    public Localization(){
+        this.deviceid = new String();
+        this.latitiude = new String();
+        this.longitude = new String();
+    }
     public Localization(String deviceid, String latitiude, String longitude) {
         this.deviceid = deviceid;
         this.latitiude = latitiude;
