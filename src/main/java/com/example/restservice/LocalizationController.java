@@ -1,5 +1,7 @@
 package com.example.restservice;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -16,31 +18,39 @@ public class LocalizationController {
     SaveFileServices saveFileServices = new SaveFileServices(fileName);
 
 
-    @GetMapping("/getGPS")
+    @GetMapping("/GPS")
     public Localization getLastGps() throws IOException {
 
         return LocalizationService.localizationGetting(listLocalizations.get(listLocalizations.size()-1),saveFileServices);
     }
 
-    @GetMapping("/getGPS/list")
+    @GetMapping("/GPS/list")
     public List<Localization> getListGps() throws IOException {
 
         return listLocalizations;
     }
-
-//    @GetMapping("/getGPS/{id}")
-    @RequestMapping(value = "/getGPS/{id}", method = RequestMethod.GET)
-    public Localization getGpsFromId(@PathParam("id") int id) throws IOException {
+    @GetMapping("/GPS/{id}")
+    public Localization getGpsFromId(@PathVariable("id") String id) throws IOException {
 
         return LocalizationService.findLocalizationFromId(listLocalizations, id);
     }
 
-    @PostMapping("/postGPS")
+    @PostMapping("/GPS")
     @ResponseBody
-    public boolean postGps(@RequestBody Localization localization) throws  IOException {
+    public ResponseEntity postGps(@RequestBody Localization localization) throws  IOException {
 
-        return listLocalizations.add(localization);
+        listLocalizations.add(localization);
 
+        return ResponseEntity.ok(HttpStatus.OK);
+
+    }
+
+    @DeleteMapping("/GPS/{id}")
+    public ResponseEntity deleteLocation(@PathVariable("id") String id) {
+
+        listLocalizations.removeIf(l -> l.getDeviceid().equals(id));
+
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
 }

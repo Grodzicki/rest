@@ -19,7 +19,7 @@ public class LocalizationService {
         return actualGps;
     }
 
-    public static Localization findLocalizationFromId(List<Localization> listLocalizations, int id){
+    public static Localization findLocalizationFromId(List<Localization> listLocalizations, String id){
 
 //        listLocalizations.stream()
 //                .filter(l -> l.getDeviceid().equals(id))
