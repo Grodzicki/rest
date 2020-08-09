@@ -1,6 +1,5 @@
 package com.example.restservice;
 
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
 import java.util.List;
