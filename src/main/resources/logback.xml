@@ -1,0 +1,10 @@
+<configuration>
+    <appender name="FileAppender" class="ch.qos.Logback.core.FileAppender">
+        <file>all.log</file>
+        <append>true</append>
+        <prudent>true</prudent>
+        <encoder>
+            <pattern>%m%n</pattern>
+        </encoder>
+    </appender>
+</configuration>

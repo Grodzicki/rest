@@ -1,14 +1,17 @@
 package com.example.restservice;
 
-import org.springframework.web.bind.annotation.RequestBody;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.List;
 
 public class LocalizationService {
+
+    final static Logger LOGGER = LoggerFactory.getLogger(LocalizationService.class);
     private final static String comma = ",";
 
     public static Localization localizationGetting(Localization localization, SaveFileServices saveFileServices) throws IOException{
+        LOGGER.info("localizationGetting", localization);
         Localization actualGps = new Localization(localization.getDeviceid(),
                 localization.getLatitiude(), localization.getLongitude());
         String logMsg = actualGps.getDeviceid()+comma
