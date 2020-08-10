@@ -18,18 +18,6 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<configuration>
-		<appender name="FileAppender" class="ch.qos.Logback.core.FileAppender">
-			<file>myLog.log</file>
-			<append>true</append>
-			<prudent>true</prudent>
-			<encoder>
-				<pattern>%m%n</pattern>
-			</encoder>
-		</appender>
-	</configuration>
-
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -55,6 +43,12 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.30</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

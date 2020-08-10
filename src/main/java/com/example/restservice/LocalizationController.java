@@ -1,5 +1,7 @@
 package com.example.restservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ public class LocalizationController {
     private final static String fileName = "C:\\Users\\Kuba\\Desktop\\testy\\restgps.txt";
     public List<Localization> listLocalizations = new ArrayList<Localization>();
     SaveFileServices saveFileServices = new SaveFileServices(fileName);
+
+    final static Logger LOGGER = LoggerFactory.getLogger(LocalizationService.class);
 
 
     @GetMapping("/GPS")
