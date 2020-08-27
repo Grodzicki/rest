@@ -1,12 +1,10 @@
 package com.example.restservice;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
+//import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +12,10 @@ import java.util.List;
 @RestController
 public class LocalizationController {
 
-    private final static String comma = ",";
+//    private final static String comma = ",";
     private final static String fileName = "C:\\Users\\Kuba\\Desktop\\testy\\restgps.txt";
-    public List<Localization> listLocalizations = new ArrayList<Localization>();
+    public List<Localization> listLocalizations = new ArrayList<>();
     SaveFileServices saveFileServices = new SaveFileServices(fileName);
-
-    final static Logger LOGGER = LoggerFactory.getLogger(LocalizationService.class);
 
 
     @GetMapping("/GPS")
@@ -29,19 +25,19 @@ public class LocalizationController {
     }
 
     @GetMapping("/GPS/list")
-    public List<Localization> getListGps() throws IOException {
+    public List<Localization> getListGps() {
 
         return listLocalizations;
     }
     @GetMapping("/GPS/{id}")
-    public Localization getGpsFromId(@PathVariable("id") String id) throws IOException {
+    public Localization getGpsFromId(@PathVariable("id") String id) {
 
         return LocalizationService.findLocalizationFromId(listLocalizations, id);
     }
 
     @PostMapping("/GPS")
     @ResponseBody
-    public ResponseEntity postGps(@RequestBody Localization localization) throws  IOException {
+    public ResponseEntity postGps(@RequestBody Localization localization)  {
 
         listLocalizations.add(localization);
 
